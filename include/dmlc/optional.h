@@ -6,6 +6,12 @@
 #ifndef DMLC_OPTIONAL_H_
 #define DMLC_OPTIONAL_H_
 
+#if __cpp_lib_optional >= 201606
+namespace dmlc {
+using std::nullopt_t;
+using std::optional
+}
+#else
 #include <iostream>
 #include <string>
 #include <utility>
@@ -258,4 +264,5 @@ struct hash<dmlc::optional<T> > {
 };
 }  // namespace std
 
+#endif  // __cpp_lib_optional
 #endif  // DMLC_OPTIONAL_H_
